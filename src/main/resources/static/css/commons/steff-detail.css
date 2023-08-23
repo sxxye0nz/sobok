@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+#detail > div.wrap.view-size.flex.center.col-center{
+	margin-top: 100px;
+}
+
+#detail > div.wrap.view-size.flex.center.col-center > table{
+	text-align: left;
+}
+td{
+	padding: 10px 0;
+	
+}
+tr {
+    border-bottom: 1px solid;
+}
+th{
+	padding-right:88.5px ;
+}
+#btn-update{
+	width: 100%;
+    padding: 0.5em 1em;
+    background-color: #24370F;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+#btn-delete{
+	width: 100%;
+    padding: 0.5em 1em;
+    background-color: #24370F;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+#form-update > div > table{
+	text-align: left;
+}
+#form-update > div > table > tbody > tr{
+	border-bottom: 1px solid;
+}
+#form-update > div > table > tbody > td{
+		padding: 10px 0;
+}
+#form-update > div > table > tbody > th{
+	padding-right:88.5px ;
+}
+#up-cancel{
+	width: 100%;
+    padding: 0.5em 1em;
+    background-color: #24370F;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+#up-ok{
+	width: 100%;
+    padding: 0.5em 1em;
+    background-color: #24370F;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+}

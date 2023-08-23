@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+#step > div > ul > li > a{
+	margin-right: 15px;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0 20px;
+    border-collapse: collapse;
+}
+tr{
+	border-bottom: 1px solid;
+}
+td{
+	padding: 20px;
+}
+#step > div > ul{
+	justify-content: flex-end;
+}
+body > main > form > div > div.step-list-board.wrap.view-size.flex.center.col-center > table > tbody > tr:nth-child(2) > th{
+	padding: 20px;
+}

@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+#form-step-write{
+	width: 400px;
+	margin: 0 auto;	
+}
+
+#form-step-write li{
+	margin: 20px 0;
+	padding: 0 20px;
+}
+
+select{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  
+  font-size: 14px;
+  
+  padding: 1em;
+
+  border-radius: .1em;
+  
+  margin: 10px 0;
+}
+select:focus {
+  outline: none;
+}
+select:disabled {
+  opacity: 0.5;
+}
+
+#title{
+	width:100%;
+	padding: 1em;
+	font-size: 14px;
+	margin: 10px 0;
+}
+#last-date{
+	width:100%;
+	padding: 1em;
+	font-size: 14px;
+	margin: 10px 0;
+}
+#step-peple{
+	width:40%;
+	padding: 1em;
+	font-size: 14px;
+	margin: 10px 0;
+}
+#form-step-write > ul > li:nth-child(4) > p:nth-child(2){
+	margin: 5px 0;
+	color: red;
+	font-size: 12px;
+}
+#gender{
+	width:10%;
+	font-size: 14px;
+	
+}
+#form-step-write > ul > li:nth-child(5) > section{
+	margin-top: 10px;
+}
+#form-step-write > ul > li:nth-child(5) > section > label > input{
+	margin-left: 5px;
+}
+#form-step-write > ul > li:nth-child(5) > section > label > span{
+	margin-left: 5px;
+}
+#form-step-write > ul > li:nth-child(5) > section > label{
+	margin-right: 10px;
+}
+
+#content{
+	width:100%;
+	height:150px;
+	padding: 1em;
+	font-size: 14px;
+	margin: 10px 0;
+}

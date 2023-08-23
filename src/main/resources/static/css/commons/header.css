@@ -1,0 +1,32 @@
+@charset "UTF-8";
+#user-area > .wrap ul li{
+	margin: 0 10px;
+}
+
+/* /////////////////////////////////// */
+/* ////////menu-area/////////////////////////// */
+/* /////////////////////////////////// */
+#menu-area{
+	border-bottom:1px solid rgba(0,0,0, 0.1); 
+}
+#menu-area > .wrap{
+	height: 110px;
+	flex:1;
+}
+
+
+#gnb > .wrap ul li a{
+	display: block;
+	padding: 10px;
+	margin: 0 5px;
+}
+
+#logo-top{
+	width: 361.953px;
+	justify-content: flex-start;
+}
+
+#user-area > div > ul{
+	width: 361.953px;
+	justify-content: flex-end;
+}

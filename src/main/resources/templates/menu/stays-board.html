@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" 
+	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )" >
+    <head>
+		<link rel="stylesheet" href="/css/commons/main.css">
+    </head>
+    <main>
+        <h1>메인영역</h1>
+        <div class="wrap view-size">
+        	<p class="tit flex center">스테이 소개 영역 입니다.</p>
+       		<!--검색영역-->
+	        <section id="search-area">
+					<h1>검색</h1>
+					<div class="wrap view-size flex center col-center">
+						<form>
+							<input type="search" placeholder="검색">
+							<button type="submit"></button>
+						</form>
+					</div>
+			</section>
+		 </div>
+    </main>
+</html>

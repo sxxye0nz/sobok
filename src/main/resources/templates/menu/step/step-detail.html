@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" 
+	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )" >
+    <head>
+		<link rel="stylesheet" href="/css/commons/steff-detail.css">
+   
+   			<script type="text/javascript">
+				$(function(){
+					$("#btn-update").click(clickedBtnUpdate);
+					
+				});
+				
+				function buttonShow(){
+					const update = document.getElementById('update');
+					
+					if(update.style.display !== 'none'){
+						update.style.display = 'none';
+					}else{
+						update.style.display='block'
+					}
+				}
+				
+			
+				function clickedBtnUpdate(){
+					$("#basic").hide();
+					$("#form-update").show();
+				}
+				       
+				function clickedBtnCancel(){
+					$("#basic").show();
+					$("#form-update").hide();
+				}
+			</script>
+	</head>
+    <main>
+        <h1>메인영역</h1>
+        <div class="wrap view-size">
+			<section id = "detail">
+        	<p class="tit flex center">공고글 상세보기</p>  
+        	<a href="/menu/step-board">이전으로</a>        	
+        	<div class="wrap view-size flex center col-center">
+				<table>
+						<tr>
+							<th>공고글 번호</th>
+							<td th:text="${detail.sno}"></td>
+						</tr>
+						<tr>
+							<th>작성자</th>
+							<td th:text="${detail.email}"></td>
+						</tr>
+						<tr>
+							<th>최초 등록일</th>
+							<td th:text="${detail.createdDate}"></td>
+						</tr>
+						<tr>
+							<th>수정 등록일</th>
+							<td th:text="${detail.updatedDate}"></td>
+						</tr>
+						<tr>
+							<th>공고 종료일</th>
+							<td th:text="${detail.lastDate}"></td>
+						</tr>
+						<tr>
+							<th>제목</th>
+							<td th:text="${detail.title}"></td>
+						</tr>
+						<tr>
+							<th>지역</th>
+							<td th:text="${detail.region}"></td>
+						</tr>
+						<tr>
+							<th>모집인원</th>
+							<td th:text="${detail.people}"></td>
+						</tr>
+						<tr>
+							<th>우대 성별</th>
+							<td th:text="${detail.gender}"></td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td colspan="2" th:text="${detail.content}"></td>
+						</tr>  
+
+						<!--게시글 수정 삭제 버튼-->
+						
+						<tr>
+						<td>
+
+							<button type="button" id="btn-update" onclick='buttonShow()'>수정</button>
+						</td>
+						<td>
+							<form th:action="|/menu/step-board/${detail.sno}|" method="post">
+								<input type="hidden" name="_method" value="DELETE"/>
+								<button id="btn-delete">삭제</button>
+							</form>
+						</td>
+					</tr>
+		</table>
+					
+	        	</div>
+	        	<!-- ////////수정 버튼 클릭시 화면/////////////////////// -->
+			<div id = "update" style="display: none">
+				<form id="form-update" th:action="@{|/steff/${detail.sno}|}" method="post">	
+					<div class="wrap view-size flex center col-center">
+					<table >
+						<tr>
+							<th>공고글 번호</th>
+							<td th:text="${detail.sno}">1</td>
+						</tr>
+						<tr>
+							<th>최초 등록일</th>
+							<td th:text="${detail.createdDate}">생성일</td>
+						</tr>
+						<tr>
+							<th>수정 등록일</th>
+							<td th:text="${detail.updatedDate}">수정일</td>
+						</tr>
+						<hr>
+						<tr>
+							<th>지역</th>
+							<td>
+							<select name='region' class="region-option" style="width: 100%;" >
+								  <option value='' selected>-- 지역을 선택하세요. --</option>
+								  <option value='seoul'>서울</option>
+								  <option value='gyeonggi'>경기도</option>
+								  <option value='ChungcheongNamdo'>충청남도</option>
+								  <option value='ChungcheongBukdo'>충청북도</option>
+								  <option value='JeollaBukdo'>전라북도</option>
+								  <option value='JeollaNamdo'>전라남도</option>
+								  <option value='GyeongsangNamdo'>경상남도</option>
+								  <option value='GyeongsangBukdo'>경상북도</option>
+								  <option value='jejudo'>제주도</option>
+							</select>
+							</td>
+						</tr>
+						<tr>
+							<th>제목</th>
+							<td>
+								<input type="text" name="title" th:value="${detail.title}">
+							</td>
+						</tr>
+						<tr>
+							<th>모집 마감일</th>
+							<td>
+								<input type="date" name="lastDate" id="last-date" value="#{detail.lastDate}"/>
+							</td>
+						</tr>
+						<tr>
+							<th>모집인원</th>
+							<td>
+								<input type="number" name="people" id="step-peple" min="1" max="10" th:value="${detail.people}"/>명
+							</td>
+						</tr>
+						<tr>
+							<th>우대 성별</th>
+							<td>
+								<input type="radio" class="gender" name="gender" th:value="#{detail.gender}" checked/><span>남여무관</span>
+								<input type="radio" class="gender" name="gender" value="male"/><span>남성</span>
+								<input type="radio" class="gender" name="gender" value="female" /><span>여성</span>
+							</td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td>
+								<input type="text" name="content" th:value="${detail.content}">		
+							</td>			
+						</tr>
+						<tr>
+								<td>
+									<input type="hidden" name="_method" value="PUT"> 
+									<input type="hidden" name="sno" th:value="${detail.sno}">
+									<button type="button" onclick="clickedBtnCancel()"id="up-cancel">취소</button>
+								</td>
+								<td>
+									<button type="submit" id="up-ok">수정완료</button>
+								</td>
+						</tr>
+					</table>	
+				</form>
+			</div>
+	        </section>
+	        </div>
+    </main>
+</html>

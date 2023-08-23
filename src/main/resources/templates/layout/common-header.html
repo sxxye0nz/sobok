@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <header id="header">
+    	<h1>헤더섹션</h1>
+    	<div class="wrap">
+			
+			<section id="menu-area">
+				<h1>메뉴</h1>
+				<div class="wrap view-size flex between col-center">
+					<section id="logo-top">
+						<h1>로고영역</h1>
+						<div class="wrap">
+							<a href="/">
+								<span class="flex logo-style ">
+									<button type="button" class="sobok-logo">
+										<img src="/images/icon/sobok-logoo.png" style="width:100px; height:100px;">								
+									</button>					
+								</span>
+							</a>
+						</div>
+					</section>
+					<nav id="gnb">
+						<h1>메뉴영역</h1>
+						<div class="wrap ">
+							<ul class="flex">
+								<li><a href="/menu/stays-board">stays</a></li>
+								<li><a href="/menu/step-board">steff</a></li>
+								<li><a href="/menu/review-board">review</a></li>
+							</ul>
+						</div>
+					</nav>
+					
+					<section id="user-area">
+						<h1>유저영역</h1>
+						<div class="wrap">
+							<ul class="flex">
+								<li sec:authorize="isAnonymous()"><a href="/signin">로그인</a></li>
+								<li sec:authorize="isAuthenticated()" class="flex col-center">								
+									<span sec:authorize="hasRole('ADMIN')">관리자</span>									
+									<span sec:authorize="hasRole('USER')">일반회원</span>
+									<span sec:authentication="name"></span>
+									<form action="/signout" method="post">
+									        <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+									        <button>로그아웃</button>
+									 </form>
+								</li>
+								<li sec:authorize="isAnonymous()"><a href="/signup">회원가입</a></li>
+								<li><a href="/common/cscenter">고객센터</a></li>
+							</ul>
+						</div>
+					</section>
+				</div>
+			</section>
+			<!--/////////////////////////////////////////////////////////-->
+			<!--<section id="search-area">
+				<h1>검색</h1>
+				<div class="wrap view-size flex center col-center">
+					<form>
+						<input type="search" placeholder="검색">
+						<button type="submit"></button>
+					</form>
+				</div>
+			</section>-->
+    	</div>
+    </header>
+</html>

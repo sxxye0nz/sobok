@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="//www.thymeleaf.org" 
+	th:replace="layout/common-layout :: commonLayout( ~{::head}, ~{::main} )" >
+    <head>
+    	<link rel="stylesheet" href="/css/commons/main.css">
+    	<link rel="stylesheet" href="/css/commons/steff-board.css">
+    </head>
+    <main>
+
+        <h1>메인영역</h1>
+        <div class="wrap view-size">
+        	<p class="tit tit flex center">모집 공고글</p>
+       		<nav id="step">
+					<h1>메뉴영역</h1>
+					<div class="wrap view-size">
+						<ul class="flex">
+							<li><a href="/menu/step/step-write">공고글 작성</a></li>							
+						</ul>
+					</div>
+				</nav>
+				<!--검색영역-->
+				<section id="search-area">
+				<h1>검색</h1>
+				<div class="wrap view-size flex center col-center">
+					<form>
+						<input type="search" placeholder="검색">
+						<button type="submit"></button>
+					</form>
+				</div>
+				</section>
+				<div class="wrap view-size">
+						<ul class="flex">
+							<li><p>공고글 상세보기는 해당 글 번호를 선택해주세요.</p></li>							
+						</ul>
+				</div>
+				<div class="step-list-board wrap view-size flex center col-center">
+					<table>
+						<tr>
+							<td>번호</td>
+							<td>제목</td>
+							<td>모집인원</td>
+							<td>작성일</td>	
+							<td>모집마감일</td>	
+							<td>작성자</td>										
+						</tr>
+						
+						<tr th:if="${#lists.isEmpty(list)}">
+									<th colspan="6">게시글이 존재하지 않습니다.</th>				
+						</tr>	
+						<tr th:each="dto:${list}">
+							<td><a th:href="${'/menu/step-board/'+dto.sno}" th:text="${dto.sno}"></a></td>
+							<td th:text="${dto.title}">제목</td>
+							<td th:text="${dto.people}">모집인원</td>
+							<td th:text="${dto.updatedDate}">작성일</td>
+							<td th:text="${dto.lastDate}">모집마감일</td>
+							<td th:text="${dto.email}">작성자</td>	
+						</tr>					
+					</table>
+				</div>
+        	</div>
+        </form>
+    </main>
+</html>
